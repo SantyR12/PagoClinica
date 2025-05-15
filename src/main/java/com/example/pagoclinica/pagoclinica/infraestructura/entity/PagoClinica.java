@@ -14,23 +14,22 @@ public class PagoClinica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "citaid" ,nullable = false)
     private Long citaId;
 
-    @Column(nullable = false)
+    @Column(name = "pacienteid" ,nullable = false)
     private Long pacienteId;
 
-    @Column(nullable = false)
+    @Column(name = "fechapago" ,nullable = false)
     private LocalDate fechaPago;
 
-    @Column(nullable = false)
+    @Column(name = "metodopago" ,nullable = false)
     private String metodoPago;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(name = "monto" ,nullable = false)
     private BigDecimal monto;
 
-    @Column(nullable = false)
+    @Column(name = "estadopago" ,nullable = false)
     private String estadoPago;
 
-    // Puedes agregar más campos si es necesario
 }

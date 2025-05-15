@@ -1,7 +1,5 @@
 package com.example.pagoclinica.pagoclinica.domain.repository;
 
-
-
 import com.example.pagoclinica.pagoclinica.domain.dto.PayClinicalDTO;
 
 import java.math.BigDecimal;
@@ -18,4 +16,9 @@ public interface IPayClinical {
     BigDecimal obtenerTotalIngresosPorFecha(LocalDate fecha);
     Map<String, Long> obtenerMetodosPagoMasUsados();
     String generarReporteIngresos();
+
+    // Nuevos métodos
+    PayClinicalDTO actualizarPago(Long id, PayClinicalDTO payClinicalDTO);
+    void eliminarPago(Long id); // Puede devolver boolean para indicar éxito/fracaso si se prefiere
+    PayClinicalDTO procesarPago(Long id, String metodoPago);
 }
