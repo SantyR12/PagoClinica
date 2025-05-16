@@ -8,7 +8,7 @@ WORKDIR /app
 # Copiar solo el pom.xml primero para aprovechar el cache de Docker si las dependencias no cambian
 COPY pom.xml .
 # Descargar dependencias (esto se cachea si pom.xml no cambia)
-RUN mvn dependency:go-offline
+RUN mvn dependency:go-offline -B
 # Copiar el resto del código fuente
 COPY src ./src
 # Construir el JAR ejecutable
@@ -19,7 +19,7 @@ RUN mvn package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 # Exponer el puerto en el que la aplicación Spring Boot corre (por defecto 8080)
-EXPOSE 8080
+EXPOSE 8085
 # Copiar el JAR construido desde la etapa de 'build'
 COPY --from=build /app/target/*.jar app.jar
 # Comando para ejecutar la aplicación
